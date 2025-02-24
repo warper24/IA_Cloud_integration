@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sous-titrage Vidéo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">Sous-titrage Vidéo</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="video.html" class="active">Vidéo</a></li>
+        <li><a href="audio.html">Audio</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Transformez vos vidéos</h1>
+      <p>Générez des sous-titres professionnels en quelques clics</p>
+    </div>
+  </section>
+  
+  <section id="uploadSection" class="upload-section">
+    <div class="upload-container">
+      <h2>Charger votre vidéo</h2>
+      <form id="uploadForm">
+        <div class="form-group file-group">
+          <label for="videoFile" class="custom-file-label">Cliquez pour sélectionner une vidéo</label>
+          <input type="file" id="videoFile" name="videoFile" accept="video/*" required>
+        </div>
+        <!-- Prévisualisation de la vidéo -->
+        <div id="videoPreviewContainer" class="media-preview-container" style="display: none;">
+          <video id="videoPreview" controls width="100%"></video>
+          <button type="button" id="deleteVideoBtn" class="btn-delete">Supprimer la vidéo</button>
+        </div>
+        <div class="options">
+          <p>Choisissez vos options :</p>
+          <div class="checkbox-group">
+            <label class="option-item">
+              <input type="checkbox" name="options" value="subtitles_txt">
+              Sous-titres en .txt
+            </label>
+            <label class="option-item">
+              <input type="checkbox" name="options" value="video_hard">
+              Vidéo avec sous-titres intégrés
+            </label>
+            <label class="option-item">
+              <input type="checkbox" name="options" value="video_srt">
+              Vidéo + sous-titres en .srt
+            </label>
+            <label class="option-item">
+              <input type="checkbox" name="options" value="subtitles_srt">
+              Sous-titres en .srt
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn-submit">Envoyer</button>
+      </form>
+    </div>
+  </section>
+  
+  <section id="resultsSection" class="results-section">
+    <h2>Résultats</h2>
+    <div id="resultsContainer"></div>
+  </section>
+  
+  <footer>
+    <p>© 2025 Projet Sous-titrage</p>
+  </footer>
+  
+  <script src="static/js/script_video.js"></script>
+</body>
+</html>
