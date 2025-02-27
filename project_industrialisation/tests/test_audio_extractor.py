@@ -1,6 +1,8 @@
 import pytest
 import os
 from unittest.mock import patch
+import sys
+sys.path.insert(0, "C:/Users/aysim/Documents/Ynov/I.A. dans Cloud/j1/fil_rouge/IA_Cloud_integration/project_industrialisation")
 from utils.audio_extractor import AudioExtractor
 
 def test_validate_file_valid():
@@ -30,9 +32,9 @@ def test_extract_audio(mock_ffmpeg_run):
 
 def test_extract_audio_failure():
     """Test si l'extraction gère bien une erreur"""
-    with patch("ffmpeg.run", side_effect=Exception("Erreur ffmpeg")):
+    with patch("extract_audio.ffmpeg.run", side_effect=Exception("Erreur ffmpeg")):
         extractor = AudioExtractor("test.mp4")
         result = extractor.extract_audio()
 
         assert result is None  # Doit retourner None en cas d'échec
-
+        

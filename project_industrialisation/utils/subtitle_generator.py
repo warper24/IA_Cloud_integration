@@ -40,3 +40,18 @@ class SubtitleGenerator:
             f.write(transcription_text)
 
         return self.subtitle_file, "transcription.txt"
+
+    @staticmethod
+    def _write_file(filename: str, content: str):
+        """
+        Écrit du contenu dans un fichier texte.
+        
+        Params
+        ------
+        filename:
+            Nom du fichier à écrire.
+        content:
+            Contenu à écrire dans le fichier.
+        """
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write(content)
