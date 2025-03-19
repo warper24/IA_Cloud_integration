@@ -1,0 +1,213 @@
+/* --- RESET & BASE --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* --- HEADER --- */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #222;
+  padding: 10px 20px;
+}
+
+header .logo {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+  color: #ddd;
+}
+
+header nav ul li a.active {
+  color: #f39c12;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: #999; /* Couleur de fond par défaut */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+}
+
+/* --- CHOICE SECTION --- */
+.choice-section {
+  padding: 30px;
+  text-align: center;
+}
+
+.choice-container {
+  display: inline-block;
+}
+
+.choice-btn {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 15px 30px;
+  background-color: #3498db;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.choice-btn:hover {
+  background-color: #2980b9;
+}
+
+/* --- UPLOAD SECTION --- */
+.upload-section {
+  padding: 30px;
+}
+
+.upload-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.upload-container h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.custom-file-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.file-group input[type="file"] {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-group label {
+  font-weight: 600;
+}
+
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.btn-submit {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #27ae60;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background-color: #229954;
+}
+
+/* --- MEDIA PREVIEW --- */
+.media-preview-container {
+  margin: 10px 0;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px dashed #ccc;
+  border-radius: 4px;
+}
+
+.btn-delete {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+/* --- RESULTS SECTION --- */
+.results-section {
+  padding: 30px;
+}
+
+.results-section h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+/* --- FOOTER --- */
+footer {
+  text-align: center;
+  background-color: #222;
+  color: #fff;
+  padding: 10px;
+  margin-top: 30px;
+}
