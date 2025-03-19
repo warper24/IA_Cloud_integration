@@ -19,7 +19,10 @@ class AudioExtractor:
         """
         self.input_file = input_file
         self.validate_file()  # Vérification du format avant d'aller plus loin
-        self.extracted_audio = f"audio-{os.path.splitext(input_file)[0]}.wav"
+        self.extracted_audio = os.path.join(
+            f"{os.path.splitext(input_file)[0]}_audio.wav"
+        )
+        # self.extracted_audio = f"audio-{os.path.splitext(input_file)[0]}.wav"
 
     def validate_file(self):
         """
@@ -54,5 +57,6 @@ class AudioExtractor:
             print(f"Extraction réussie : {self.extracted_audio}")
             return self.extracted_audio
         except Exception as e:
-            print(f"Erreur lors de l'extraction de l'audio : {e}")
-            return None
+            msg = f"Erreur lors de l'extraction de l'audio : {e}"
+            print(msg)
+            raise RuntimeError(msg)

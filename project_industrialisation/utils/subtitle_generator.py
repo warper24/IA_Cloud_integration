@@ -1,3 +1,5 @@
+import os
+
 class SubtitleGenerator:
     """
     Classe permettant de générer un fichier de sous-titres SRT et
@@ -13,46 +15,41 @@ class SubtitleGenerator:
         Params
         ------
         input_video:
-            Nom du fichier vidéo en entrée.
+            Chemin du fichier vidéo en entrée (ex: "uploads/input.mp4").
         transcription:
-            Dictionnaire contenant les segments de
-            transcription avec timestamps.
+            Dictionnaire contenant les segments de transcription
+            (ex: {"chunks": [{"timestamp": [start, end], "text": "..."}]}).
         """
-        self.input_video_name = input_video.replace(".mp4", "")
-        self.subtitle_file = f"sub-{self.input_video_name}.srt"
+        # On récupère uniquement le nom de fichier sans dossier ni extension
+        base_name = os.path.splitext(os.path.basename(input_video))[0]
+        
+        # On place le .srt dans le dossier "outputs"
+        os.makedirs("outputs", exist_ok=True)
+        self.subtitle_file = os.path.join("outputs", f"{base_name}.srt")
+
         self.transcription = transcription
 
     @staticmethod
     def format_time(seconds: float) -> str:
         """
         Convertit un temps en secondes au format SRT (hh:mm:ss,ms).
-        
-        :param seconds: Temps en secondes.
-        :return: Temps formaté sous forme de chaîne de caractères.
         """
         hours = int(seconds // 3600)
         minutes = int((seconds % 3600) // 60)
         secs = int(seconds % 60)
         milliseconds = int(round((seconds - int(seconds)) * 1000))
-
         return f"{hours:02}:{minutes:02}:{secs:02},{milliseconds:03}"
 
     def generate_subtitles(self) -> tuple:
         """
-        Génère un fichier de sous-titres SRT
-        et un fichier brut de transcription.
-
-        Params
-        ------
+        Génère un fichier de sous-titres SRT et un fichier brut de transcription.
+        
         return:
-            Tuple contenant le nom du fichier SRT généré
-            et celui du fichier de transcription.
+            (srt_file, transcription_file)
+            Chemins du fichier SRT généré et du fichier texte brut.
         """
         if "chunks" not in self.transcription:
-            raise ValueError(
-                """La transcription ne contient
-                            pas de 'chunks' valides."""
-            )
+            raise ValueError("La transcription ne contient pas de 'chunks' valides.")
 
         subtitle_text = []
         transcription_text = []
@@ -73,23 +70,20 @@ class SubtitleGenerator:
             )
             transcription_text.append(chunk["text"])
 
-        # Écriture des fichiers
+        # Écriture du .srt dans self.subtitle_file
         self._write_file(self.subtitle_file, "\n".join(subtitle_text))
-        self._write_file("transcription.txt", "\n".join(transcription_text))
 
-        return self.subtitle_file, "transcription.txt"
+        # Génération du fichier texte brut (dans "outputs" également)
+        base_srt = os.path.splitext(os.path.basename(self.subtitle_file))[0]  # ex: "input"
+        transcription_file = os.path.join("outputs", f"{base_srt}_transcription.txt")
+        self._write_file(transcription_file, "\n".join(transcription_text))
+
+        return self.subtitle_file, transcription_file
 
     @staticmethod
     def _write_file(filename: str, content: str):
         """
         Écrit du contenu dans un fichier texte.
-
-        Params
-        ------
-        filename:
-            Nom du fichier à écrire.
-        content:
-            Contenu à écrire dans le fichier.
         """
         with open(filename, "w", encoding="utf-8") as f:
             f.write(content)

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sous-titrage Vidéo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">Sous-titrage Vidéo</div>
+    <nav>
+      <ul>
+        <li><a href="/" >Accueil</a></li>
+        <li><a href="/video" class="active">Vidéo</a></li>
+        <li><a href="/audio">Audio</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Transformez vos vidéos</h1>
+      <p>Générez des sous-titres professionnels en quelques clics</p>
+    </div>
+  </section>
+  
+  <section id="uploadSection" class="upload-section">
+    <div class="upload-container">
+      <h2>Charger votre vidéo</h2>
+      <form id="uploadForm" action="/process" method="post" enctype="multipart/form-data">
+        <div class="form-group file-group">
+          <label for="file" class="custom-file-label">Cliquez pour sélectionner une vidéo (.mp4)</label>
+          <input type="file" id="file" name="file" accept="video/mp4,video/*" required>
+        </div>
+        
+        <!-- Conteneur de prévisualisation de la vidéo -->
+        <div id="videoPreviewContainer" class="media-preview-container" style="display: none;">
+          <video id="videoPreview" controls style="width: 100%;"></video>
+          <button type="button" id="deleteVideoBtn" class="btn-delete">Supprimer la vidéo</button>
+        </div>
+        
+        <div class="form-group">
+          <label for="output_type">Choisissez le type de résultat :</label>
+          <select name="output_type" id="output_type">
+            <option value="video_embedded">Vidéo avec sous-titres intégrés</option>
+            <option value="video_metadata">Vidéo avec sous-titres en métadonnées</option>
+            <option value="subtitles">Sous-titres seuls</option>
+            <option value="text">Transcription texte</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-submit">Envoyer</button>
+      </form>
+    </div>
+  </section>
+  
+  <section id="resultsSection" class="results-section">
+    <h2>Résultats</h2>
+    <div id="resultsContainer"></div>
+  </section>
+  
+  <footer>
+    <p>© 2025 Projet Sous-titrage</p>
+  </footer>
+  
+  <script src="/static/js/script_video.js"></script>
+</body>
+</html>
