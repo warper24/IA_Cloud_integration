@@ -1,0 +1,23 @@
+# Framework Web
+fastapi==0.95.1
+uvicorn==0.22.0
+
+# Gestion des fichiers et data processing
+pydantic==1.10.7
+
+# Manipulation audio et vidéo
+ffmpeg-python==0.2.0
+
+# Transcription audio
+whisper==1.0  
+torch==2.0.0  
+torchaudio==2.0.0  
+
+# Traitement de texte et sous-titres
+srt==3.5.3  
+
+# Gestion des fichiers et logs
+python-multipart==0.0.5  
+
+# Tests unitaires et développement
+pytest==7.2.2
